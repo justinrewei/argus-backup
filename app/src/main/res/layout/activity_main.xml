@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#eaffff"
+    android:orientation="vertical"
+    tools:context="com.justinwei.auijustin.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="argus - interactive trainer"
+        android:textColor="#000000"
+        android:textSize="40dp"
+        android:id="@+id/textView" />
+
+
+    <Button
+        android:id="@+id/btnTakeAPicture"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#003d99"
+        android:text="Take a Picture"
+        android:textColor="#ffad33"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <Button
+        android:id="@+id/btnChooseFromGallery"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#003d99"
+        android:text="Choose from Gallery"
+        android:textColor="#ffad33"
+        android:layout_alignTop="@+id/btnTakeAPicture"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+</RelativeLayout>
