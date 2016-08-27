@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ImageActivity extends AppCompatActivity implements ImageTaskDelegate{
 
     public static int x1, y1, x2, y2;
-    private ImageView capturedPhoto;
+    private DrawView capturedPhoto;
     private Uri selectedImage;
     private static final String TAG = "ImageActivity";
     Paint red;
@@ -29,7 +29,7 @@ public class ImageActivity extends AppCompatActivity implements ImageTaskDelegat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
 
-        capturedPhoto = (ImageView) findViewById(R.id.capturedPhoto);
+        capturedPhoto = (DrawView) findViewById(R.id.capturedPhoto);
 
         Uri imageUri = getIntent().getParcelableExtra("imageUri");
         capturedPhoto.setImageURI(imageUri);
@@ -84,6 +84,7 @@ public class ImageActivity extends AppCompatActivity implements ImageTaskDelegat
     public void taskCompletionResult(ArrayList<IdentifiedImageObject> result) {
         ArrayList<IdentifiedImageObject> boxes = result;
         showBoxes(boxes);
+        capturedPhoto.setBoxes(boxes);
     }
 
     private void showBoxes(ArrayList<IdentifiedImageObject> boxes){

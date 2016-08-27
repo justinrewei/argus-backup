@@ -42,7 +42,7 @@ public class IdentifiedImageObject {
         return x0;
     }
 
-    public int getX1() {
+    public int getWidth() {
         return x1;
     }
 
@@ -50,7 +50,7 @@ public class IdentifiedImageObject {
         return tag;
     }
 
-    public int getY1() {
+    public int getHeight() {
         return y1;
     }
 }
