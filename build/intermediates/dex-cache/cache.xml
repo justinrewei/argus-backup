@@ -1,3 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f3ee23ef25c9a8fe3d40246d0b7097267963a612">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.0_010594f39c5a6cf7aa66c2b94f2d9a4bd077aeca\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f9b41622897665678d31d78e57a361cb0cebcb0d">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.0_abc33cca8f33924bac4187d707497a55c338fd2e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c84e216d9bf618464d6b9564d71d9a656433e7c4">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.0_0961855e160a54d8aabec382ccb463dea9fcd5c6\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="60d7b23621d31e6f42f4f76f16af467e57a20cda">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.0_1ef8737a3c9a7b5af8037d46982ca371fa84b09b\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="032a4b53def5e2ceedfc2e793b126c0163cfa1dd">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.0_ec5c9e3c20fd40d965445f964544c2d9621adce9\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6eb9107eb34d2fe2b020662b7fbbec991dcba846">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.0_a7fb4cdb9154027c61000442e3fe4a17b3d91155\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6e02e34594ebe9c0501ffda8dd48497f81b82977">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.0_98fd29e6c74f540b8d293333e6d999abe7393b81\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="beac40bcc8a320a896dd15f5109cfcaea5e1e0e3">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.0_d5fe2aabb2dc9f34b59b04a20ff40a32cbc37b9e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="45f5eda279825ff470e3f51019d374d1ef61e000">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.0_3a4aca693db06dea7dfd75426df52287f1f74719\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9ea4158a74ad919e9965961d35ec5ee0c1e8b79d">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_7186f03ee840c5fd3624fd295b34c0bc37b0d710\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d8bd2268fdcbfd52c76ade65d9900cd8def93a44">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.0_a2e5de250f642cae94147d86b546146b7393b158\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c3c638be6e650b165ab9ae144857b64e82787fad">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.0_930476762731ccb8bb5ad64f970c2b85a18eadf9\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="fcc945a86ebcbf527429acb8216ec7dae2c06417">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.0_7e2ca2faca679e32c693f47fd5334558beb9588a\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="771b3cc0e597b54da25f8086ba73180c59c6bc71">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.0_fef90d03b948231b89b079928f7557f690e4d7f3\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.0\support-annotations-24.2.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6be858a75633b1f0a2d24cad740db57775cb6871">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.0_6c04403d2329678362db5965ecea1c56ce844878\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="954faebed93a0a3fda9edf6884c972ed2194ec59">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_3aea0e2040f3df3b887dbeed375456dc0881946b\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="045be695d968dd707691cc55d23746dbf8cf569a">
+        <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.0_8bc55dd2d90fda053c50e63a71524529a467c546\classes.dex" />
+    </item>
+
+</items>
