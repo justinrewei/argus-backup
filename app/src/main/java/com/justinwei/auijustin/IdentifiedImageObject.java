@@ -1,9 +1,5 @@
 package com.justinwei.auijustin;
 
-import android.util.Log;
-
-import java.util.ArrayList;
-
 /**
  * Created by justinwei on 8/26/2016.
  */
@@ -13,7 +9,7 @@ public class IdentifiedImageObject {
     private int x0, y0;
 
     //lower right corner
-    private int x1, y1;
+    private int width, height;
 
     //tag
     private String tag;
@@ -24,9 +20,9 @@ public class IdentifiedImageObject {
         y0 = y;
     }
 
-    public void setLowerRight(int x, int y){
-        x1 = x;
-        y1 = y;
+    public void setBoxWidthandHeight(int x, int y){
+        width = x;
+        height = y;
     }
 
     public void setTag(String tag){
@@ -43,7 +39,7 @@ public class IdentifiedImageObject {
     }
 
     public int getWidth() {
-        return x1;
+        return width;
     }
 
     public String getTag() {
@@ -51,6 +47,6 @@ public class IdentifiedImageObject {
     }
 
     public int getHeight() {
-        return y1;
+        return height;
     }
 }

@@ -1,34 +1,24 @@
 package com.justinwei.auijustin;
 
 import android.content.Context;
-import android.content.CursorLoader;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.provider.MediaStore;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -159,27 +149,27 @@ public class ImageTask extends AsyncTask<Uri, Void, ArrayList<IdentifiedImageObj
                 JSONArray lowerRightCoordinates = boxArray.getJSONArray(1);
 
                 //inside upper left coordinates array
-                Integer upperLeftCoordinateX = upperLeftCoordinates.getInt(0);
-                Integer upperLeftCoordinateY = upperLeftCoordinates.getInt(1);
+                Integer upperLeftCoordinateX = upperLeftCoordinates.getInt(1);
+                Integer upperLeftCoordinateY = upperLeftCoordinates.getInt(0);
 
                 //inside lower right coordinates array
-                Integer lowerRightCoordinateX = lowerRightCoordinates.getInt(0);
-                Integer lowerRightCoordinateY = lowerRightCoordinates.getInt(1);
+                Integer width = lowerRightCoordinates.getInt(0);
+                Integer height = lowerRightCoordinates.getInt(1);
 
                 Log.d(TAG, "JSON Label: " + labelsObject);
                 Log.d(TAG, "upperLeftCoordinate: " + upperLeftCoordinates);
                 Log.d(TAG, "lowerRightCoordinate: " + lowerRightCoordinates);
                 Log.d(TAG, "upperLeftCoordinateX: " + upperLeftCoordinateX);
                 Log.d(TAG, "upperLeftCoordinateY: " + upperLeftCoordinateY);
-                Log.d(TAG, "lowerRightCoordinateX: " + lowerRightCoordinateX);
-                Log.d(TAG, "lowerRightCoordinateY: " + lowerRightCoordinateY);
+                Log.d(TAG, "lowerRightCoordinateX: " + width);
+                Log.d(TAG, "lowerRightCoordinateY: " + height);
                 Log.d(TAG, "Tag: " + tag);
 
 
                 //create instance of IdentifiedImageObject
                 IdentifiedImageObject identifiedImageObject = new IdentifiedImageObject();
                 identifiedImageObject.setUpperLeft(upperLeftCoordinateX, upperLeftCoordinateY);
-                identifiedImageObject.setLowerRight(lowerRightCoordinateX, lowerRightCoordinateY);
+                identifiedImageObject.setBoxWidthandHeight(width, height);
                 identifiedImageObject.setTag(tag);
 
                 boxes.add(identifiedImageObject);

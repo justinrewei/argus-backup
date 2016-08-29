@@ -68,7 +68,7 @@
         jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="9ea4158a74ad919e9965961d35ec5ee0c1e8b79d">
+        sha1="b0f7156d96ff9533124b9768c25b59b35615b455">
         <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_7186f03ee840c5fd3624fd295b34c0bc37b0d710\classes.dex" />
     </item>
     <item
@@ -110,7 +110,7 @@
         jar="C:\Users\justinwei\AUIJustin\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="954faebed93a0a3fda9edf6884c972ed2194ec59">
+        sha1="6da229929878ba040e8ca2711d56a863b56da2a0">
         <dex dex="C:\Users\justinwei\AUIJustin\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_3aea0e2040f3df3b887dbeed375456dc0881946b\classes.dex" />
     </item>
     <item

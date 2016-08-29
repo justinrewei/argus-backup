@@ -25,11 +25,11 @@ class DrawView extends ImageView {
         super(context);
     }
 
-    DrawView(Context context, AttributeSet attrs) {
+    public DrawView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    DrawView(Context context, AttributeSet attrs, int defStyle) {
+    public DrawView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
@@ -53,15 +53,17 @@ class DrawView extends ImageView {
 
         if (boxes != null) {
             for (IdentifiedImageObject identifiedImageObject : boxes) {
-                float leftx = identifiedImageObject.getY0(); //98;
-                float topy = identifiedImageObject.getX0(); //302;
+                float leftx = identifiedImageObject.getX0(); //98;
+                float topy = identifiedImageObject.getY0(); //302;
                 float width = identifiedImageObject.getWidth();
                 float height = identifiedImageObject.getHeight();
                 String tag = identifiedImageObject.getTag();
                 //canvas.drawRect(380, 125, 575, 400, paint); //dog coordinates
 
                 //canvas.drawRect(100, 100, 300, 200, paint); //dog coordinates
-                canvas.drawRect(leftx, topy, leftx + width, topy + height, paint);
+
+                    canvas.drawRect(leftx, topy, leftx + width, topy + height, paint);
+
                 canvas.drawText("" + tag, leftx, topy + 35, textPaint);
                 //canvas.drawRect(leftx/(float)2.4533334, (491-topy)/(float)2.4533334, (leftx+width)/(float)2.4533334, (491-topy+height)/(float)2.4533334, paint);
             }
