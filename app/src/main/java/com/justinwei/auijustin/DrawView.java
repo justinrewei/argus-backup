@@ -1,6 +1,7 @@
 package com.justinwei.auijustin;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -8,9 +9,11 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,10 +22,14 @@ import java.util.ArrayList;
  */
 class DrawView extends ImageView {
 
+    private static String TAG = "ImageView";
     private String tag;
     private ArrayList<IdentifiedImageObject> boxes;
+    private int actualImageWidth, actualImageHeight;
     public DrawView(Context context) {
         super(context);
+
+
     }
 
     public DrawView(Context context, AttributeSet attrs) {
@@ -36,7 +43,6 @@ class DrawView extends ImageView {
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         Paint paint = new Paint();
         paint.setColor(Color.RED);
         paint.setAlpha(90);
@@ -49,6 +55,15 @@ class DrawView extends ImageView {
         textPaint.setTextSize(60);
 
 
+        float ih=this.getMeasuredHeight();//height of imageView
+        float iw=this.getMeasuredWidth();//width of imageView
+        int iH=this.getDrawable().getIntrinsicHeight();//original height of underlying image
+        int iW=this.getDrawable().getIntrinsicWidth();//original width of underlying image
+
+        float ratio;
+        if (ih/iH<=iw/iW) ratio=ih/iH;//rescaled width of image within ImageView
+        else ratio= iw/iW;//rescaled height of image within ImageView
+
 
 
         if (boxes != null) {
@@ -58,55 +73,23 @@ class DrawView extends ImageView {
                 float width = identifiedImageObject.getWidth();
                 float height = identifiedImageObject.getHeight();
                 String tag = identifiedImageObject.getTag();
-                //canvas.drawRect(380, 125, 575, 400, paint); //dog coordinates
+                Log.d(TAG, getMeasuredHeight() + " is the measured height and " + getMeasuredWidth() + " is the measured width.");
 
-                //canvas.drawRect(100, 100, 300, 200, paint); //dog coordinates
+                int getMeasuredWidth = getMeasuredWidth();
+                float scaledPictureRatio = (float)getMeasuredWidth / actualImageWidth;
 
-                    canvas.drawRect(leftx, topy, leftx + width, topy + height, paint);
+                float newLeftX = leftx*scaledPictureRatio;
+                float newTopY = topy*scaledPictureRatio;
+                float newWidth = width*scaledPictureRatio;
+                float newHeight = height*scaledPictureRatio;
+                Log.d(TAG, "Image actual size: " + actualImageWidth + "x" + actualImageHeight);
+                Log.d(TAG, "Scale ratio: " + scaledPictureRatio);
 
-                canvas.drawText("" + tag, leftx, topy + 35, textPaint);
-                //canvas.drawRect(leftx/(float)2.4533334, (491-topy)/(float)2.4533334, (leftx+width)/(float)2.4533334, (491-topy+height)/(float)2.4533334, paint);
+                    canvas.drawRect(newLeftX, newTopY, (newLeftX + newWidth), (newTopY + newHeight), paint);
+
+                canvas.drawText("" + tag, newLeftX, newTopY + 35, textPaint);
             }
-
-       /*
-        float leftx = 302; //98;
-        float topy = 98; //302;
-        float width = 170;
-        float height = 231;
-        //canvas.drawRect(380, 125, 575, 400, paint); //dog coordinates
-
-        float scale = (float)2.4533334;
-        //canvas.drawRect(100, 100, 300, 200, paint); //dog coordinates
-        canvas.drawRect(leftx, topy, leftx+width, topy+height, paint);
-        //canvas.drawRect(leftx/(float)2.4533334, (491-topy)/(float)2.4533334, (leftx+width)/(float)2.4533334, (491-topy+height)/(float)2.4533334, paint);
-    */
         }
-    }
-
-
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
-        // Get image matrix values and place them in an array
-        float[] f = new float[9];
-        getImageMatrix().getValues(f);
-
-        // Extract the scale values using the constants (if aspect ratio maintained, scaleX == scaleY)
-        final float scaleX = f[Matrix.MSCALE_X];
-        final float scaleY = f[Matrix.MSCALE_Y];
-
-        // Get the drawable (could also get the bitmap behind the drawable and getWidth/getHeight)
-        final Drawable d = getDrawable();
-        final int origW = d.getIntrinsicWidth();
-        final int origH = d.getIntrinsicHeight();
-
-        // Calculate the actual dimensions
-        final int actW = Math.round(origW * scaleX);
-        final int actH = Math.round(origH * scaleY);
-
-        Log.e("DBG", "["+origW+","+origH+"] -> ["+actW+","+actH+"] & scales: x="+scaleX+" y="+scaleY);
     }
 
     public void setBoxes(ArrayList<IdentifiedImageObject> boxes){
@@ -116,4 +99,9 @@ class DrawView extends ImageView {
         this.invalidate();
     }
 
+
+    public void setActualImageWidthAndHeight(int width, int height){
+        actualImageWidth = width;
+        actualImageHeight = height;
+    }
 }

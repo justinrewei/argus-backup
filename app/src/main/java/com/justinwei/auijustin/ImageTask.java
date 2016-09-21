@@ -44,27 +44,6 @@ public class ImageTask extends AsyncTask<Uri, Void, ArrayList<IdentifiedImageObj
 
     @Override
     protected ArrayList<IdentifiedImageObject> doInBackground(Uri... uris) {
-        /*HttpPost httpPost = new HttpPost("http://130.245.169.183/IS_argus/modified_api.php?op=identify_objects");
-        Uri image = uris[0];
-        File imageFile = new File((image.getPath()));
-
-        ContentType type = ContentType.create("image/jpeg");
-        ContentBody cbFile = new FileBody(imageFile, type);
-
-        MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-        builder.addPart("image", cbFile);
-
-        HttpEntity entity = builder.build();
-        httpPost.setEntity(entity);
-
-        HttpClientBuilder clientBuilder = HttpClientBuilder.create();
-        try {
-            HttpResponse response = clientBuilder.build().execute(httpPost);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
-
 
         try {
             Uri image = uris[0];
@@ -75,7 +54,6 @@ public class ImageTask extends AsyncTask<Uri, Void, ArrayList<IdentifiedImageObj
             URL url = new URL("http://130.245.169.183/IS_argus/modified_api.php?op=identify_objects");
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setDoOutput(true);
-            //urlConnection.setChunkedStreamingMode(0);
             urlConnection.setDoInput(true);
             //write HTTP headers
             urlConnection.setRequestProperty("Content-Type", "multipart/form-data; boundary=----WebKitFormBoundaryChxiHEU3U8MFB0zg");
@@ -169,7 +147,8 @@ public class ImageTask extends AsyncTask<Uri, Void, ArrayList<IdentifiedImageObj
                 //create instance of IdentifiedImageObject
                 IdentifiedImageObject identifiedImageObject = new IdentifiedImageObject();
                 identifiedImageObject.setUpperLeft(upperLeftCoordinateX, upperLeftCoordinateY);
-                identifiedImageObject.setBoxWidthandHeight(width, height);
+                    identifiedImageObject.setBoxWidthandHeight(width, height);
+
                 identifiedImageObject.setTag(tag);
 
                 boxes.add(identifiedImageObject);
@@ -190,13 +169,6 @@ public class ImageTask extends AsyncTask<Uri, Void, ArrayList<IdentifiedImageObj
         }
 
         return boxes;
-
-    }
-
-
-
-
-    private void writeStream(File file, OutputStream out) {
 
     }
 

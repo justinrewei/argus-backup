@@ -12,8 +12,8 @@
     tools:context="com.justinwei.auijustin.ImageActivity">
 
     <com.justinwei.auijustin.DrawView
-        android:layout_width="400dp"
-        android:layout_height="400dp"
+        android:layout_width="310dp"
+        android:layout_height="310dp"
         android:layout_centerHorizontal="true"
         android:scaleType="fitStart"
 
@@ -38,8 +38,9 @@
         android:text="Identify Objects"
         android:textColor="#ffad33"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/btnFinetune"
-        android:layout_toStartOf="@+id/btnFinetune" />
+        android:layout_toStartOf="@+id/btnFinetune"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ImageView
         android:layout_width="wrap_content"

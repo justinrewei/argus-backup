@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -17,15 +18,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     private ImageView capturedPhoto;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         capturedPhoto = (ImageView) findViewById(R.id.capturedPhoto);
+
 
 
         final Button btnTakeAPicture = (Button) findViewById(R.id.btnTakeAPicture);
@@ -67,27 +73,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /*
-    String mCurrentPhotoPath;
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "ARGUS_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        storageDir.mkdirs();
-        File image = File.createTempFile(
-                imageFileName,
-                ".jpg",
-                storageDir
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
-        return image;
-    }
-    */
-
-
     static final int REQUEST_TAKE_PHOTO = 1;
 
     private void dispatchTakePictureIntent() {
@@ -95,22 +80,6 @@ public class MainActivity extends AppCompatActivity {
         // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-            /*
-            File photoFile = null;
-            try {
-                photoFile = createImageFile();
-            } catch (IOException ex) {
-                Toast.makeText(MainActivity.this, "Error creating file", Toast.LENGTH_SHORT).show();
-            }
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-
-                Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.justinwei.android.fileprovider",
-                        photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-            }
-            */
         }
     }
 
@@ -134,14 +103,6 @@ public class MainActivity extends AppCompatActivity {
                 //This displays the picture on the screen
                 Bundle extras = data.getExtras();
                 Bitmap imageBitmap = (Bitmap) extras.get("data");
-                //capturedPhoto.setImageBitmap(imageBitmap);
-
-                /* --------------------------------- THIS PART PUTS THE IMAGE ON THE NEXT SCREEN ---------------------------------------
-                Intent startImageActivity = new Intent(MainActivity.this, ImageActivity.class);
-                startImageActivity.putExtra("imageBitmap", imageBitmap);
-                startActivity(startImageActivity);
-                */
-
             } else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(MainActivity.this, "Image capture canceled.", Toast.LENGTH_SHORT).show();
             } else {
@@ -156,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Get the Image from data
                 Uri imageURI = data.getData();
+
 
                 ConnectivityManager connMgr = (ConnectivityManager)
                         getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -179,21 +141,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
-
-
-    /*
-   private void galleryAddPic() {
-        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        File f = new File(mCurrentPhotoPath);
-        Uri contentUri = Uri.fromFile(f);
-        mediaScanIntent.setData(contentUri);
-        this.sendBroadcast(mediaScanIntent);
-    }
-    */
-
-
-
 }
 
