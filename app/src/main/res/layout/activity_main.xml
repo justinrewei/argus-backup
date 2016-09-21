@@ -16,7 +16,7 @@
         android:layout_height="320dp"
         android:layout_marginTop="40dp"
         android:gravity="center"
-        android:text="argus - interactive trainer"
+        android:text="argus UI"
         android:textColor="#000000"
         android:textSize="40dp"
         android:id="@+id/textView" />
