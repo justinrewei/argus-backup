@@ -1,9 +1,12 @@
 package com.justinwei.auijustin;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.Toast;
 
 
 import org.json.JSONArray;
@@ -14,10 +17,12 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,6 +31,8 @@ import java.util.ArrayList;
  * Created by justinwei on 8/9/2016.
  */
 public class ImageTask extends AsyncTask<Uri, Void, ArrayList<IdentifiedImageObject>> {
+
+    private static final String IDENTIFY_CMD = "http://130.245.169.183/IS_argus/modified_api.php?op=identify_objects";
 
 
     private Context myContext;
@@ -41,6 +48,10 @@ public class ImageTask extends AsyncTask<Uri, Void, ArrayList<IdentifiedImageObj
         this.delegate = delegate;
     }
 
+    // max image width and height that we will upload;
+    //if image exceeds either max value, we will scale it down
+    private final int  MAX_WIDTH = 800;
+    private final int MAX_HEIGTH = 800;
 
     @Override
     protected ArrayList<IdentifiedImageObject> doInBackground(Uri... uris) {
@@ -49,9 +60,16 @@ public class ImageTask extends AsyncTask<Uri, Void, ArrayList<IdentifiedImageObj
             Uri image = uris[0];
             String path = image.getEncodedPath();
 
-            InputStream fileInputStream = myContext.getContentResolver().openInputStream(image);
+            //what is the size of the image? If it is too big, scale it down to
+            //get faster upload time.  12/1/2016
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(myContext.getContentResolver(), image);
+            InputStream fileInputStream = null; // = myContext.getContentResolver().openInputStream(image);
 
-            URL url = new URL("http://130.245.169.183/IS_argus/modified_api.php?op=identify_objects");
+            fileInputStream = myContext.getContentResolver().openInputStream(image);
+
+            //URL url = new URL("http://130.245.169.183/IS_argus/modified_api.php?op=identify_objects");
+            URL url = new URL(IDENTIFY_CMD);
+
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setDoOutput(true);
             urlConnection.setDoInput(true);
@@ -136,11 +154,11 @@ public class ImageTask extends AsyncTask<Uri, Void, ArrayList<IdentifiedImageObj
 
                 Log.d(TAG, "JSON Label: " + labelsObject);
                 Log.d(TAG, "upperLeftCoordinate: " + upperLeftCoordinates);
-                Log.d(TAG, "lowerRightCoordinate: " + lowerRightCoordinates);
+                //Log.d(TAG, "lowerRightCoordinate: " + lowerRightCoordinates);
                 Log.d(TAG, "upperLeftCoordinateX: " + upperLeftCoordinateX);
                 Log.d(TAG, "upperLeftCoordinateY: " + upperLeftCoordinateY);
-                Log.d(TAG, "lowerRightCoordinateX: " + width);
-                Log.d(TAG, "lowerRightCoordinateY: " + height);
+                Log.d(TAG, "Width: " + width);
+                Log.d(TAG, "Height: " + height);
                 Log.d(TAG, "Tag: " + tag);
 
 
@@ -163,9 +181,14 @@ public class ImageTask extends AsyncTask<Uri, Void, ArrayList<IdentifiedImageObj
 
         } catch (IOException e) {
             e.printStackTrace();
+            Toast.makeText(myContext, "Error contacting server " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(myContext, "Error parsing result from server " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             Log.e("TAG", "Could not parse malformed JSON: \"" + response + "\"");
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(myContext, "Error contacting server " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
         }
 
         return boxes;
@@ -184,5 +207,6 @@ public class ImageTask extends AsyncTask<Uri, Void, ArrayList<IdentifiedImageObj
 
 
     }
+
 
 }

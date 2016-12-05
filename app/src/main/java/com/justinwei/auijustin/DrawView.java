@@ -65,7 +65,6 @@ class DrawView extends ImageView {
         else ratio= iw/iW;//rescaled height of image within ImageView
 
 
-
         if (boxes != null) {
             for (IdentifiedImageObject identifiedImageObject : boxes) {
                 float leftx = identifiedImageObject.getX0(); //98;
@@ -73,9 +72,15 @@ class DrawView extends ImageView {
                 float width = identifiedImageObject.getWidth();
                 float height = identifiedImageObject.getHeight();
                 String tag = identifiedImageObject.getTag();
-                Log.d(TAG, getMeasuredHeight() + " is the measured height and " + getMeasuredWidth() + " is the measured width.");
+                //Log.d(TAG, getMeasuredHeight() + " is the measured height and " + getMeasuredWidth() + " is the measured width.");
 
-                int getMeasuredWidth = getMeasuredWidth();
+                //need to get the actual image width display in image view
+                //as in portraint mode, the width of image is not the same as
+                //the width of the image view.   12/4/2016
+
+                //int getMeasuredWidth = getMeasuredWidth();
+
+                int getMeasuredWidth = getImageWidthInView();
                 float scaledPictureRatio = (float)getMeasuredWidth / actualImageWidth;
 
                 float newLeftX = leftx*scaledPictureRatio;
@@ -103,5 +108,30 @@ class DrawView extends ImageView {
     public void setActualImageWidthAndHeight(int width, int height){
         actualImageWidth = width;
         actualImageHeight = height;
+    }
+
+    private int getImageWidthInView() {
+        float[] f = new float[9];
+        getImageMatrix().getValues(f);
+
+        // Extract the scale values using the constants (if aspect ratio maintained, scaleX == scaleY)
+        final float scaleX = f[Matrix.MSCALE_X];
+        final float scaleY = f[Matrix.MSCALE_Y];
+
+        // Get the drawable (could also get the bitmap behind the drawable and getWidth/getHeight)
+        final Drawable d = getDrawable();
+        final int origW = d.getIntrinsicWidth();
+        final int origH = d.getIntrinsicHeight();
+
+        // Calculate the actual dimensions
+        final int actW = Math.round(origW * scaleX);
+        final int actH = Math.round(origH * scaleY);
+
+        int getMeasuredWidth = actW;
+        //int w = getMeasuredWidth();
+        Log.d(TAG, "on screen image width is "  + actW);
+        Log.d(TAG, "on screen image height is "  + actH);
+
+        return getMeasuredWidth;
     }
 }
